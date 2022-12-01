@@ -4,12 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { MantineProvider } from '@mantine/core';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <MantineProvider withGlobalStyles withNormalizeCSS>
     <App />
-  </React.StrictMode>
+  </MantineProvider>
 );
 
 // If you want your app to work offline and load faster, you can change
