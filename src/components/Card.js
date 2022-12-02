@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStyles, Card, Text, Group } from '@mantine/core';
+import { createStyles, Card, Text, Group, Image } from '@mantine/core';
 import { IconWind, IconSunHigh, IconCloud, IconSunWind, IconCloudRain, IconTornado, IconTemperaturePlus, IconTemperatureMinus } from '@tabler/icons';
 
 const useStyles = createStyles((theme) => ({
@@ -23,35 +23,60 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const CardWithStats = ({day, wind, temp, description}) => {
+const CardWithStats = ({date, maxtemp, mintemp, maxwind, condition}) => {
   const { classes } = useStyles();
 
-  let temps  = { icon: IconSunHigh };
+  /* Date formating */
+  const getDate = () => {
+    let rawDate = new Date(date);
+    let day = rawDate.getDate();
+    let month = rawDate.getMonth()+1;
+    let year = rawDate.getFullYear();
+    day = day < 10 ? '0' + day : day;
+    month = month < 10 ? '0' + month : month;
+    let formattedDate = day + "/" + month + "/" + year;
 
-  if (description == "Nuageux") {
-    temps = { icon: IconCloud };
+    var today = new Date();
+    let dayT = today.getDate();
+    let monthT = today.getMonth()+1;
+    let yearT = today.getFullYear();
+    dayT = dayT < 10 ? '0' + dayT : dayT;
+    monthT = monthT < 10 ? '0' + monthT : monthT;
+    var dateToday = dayT + "/" + monthT + "/" + yearT;
+
+    console.log(dateToday);
+    if (formattedDate == dateToday) {
+      return formattedDate = "Aujourd'hui"
+    } else {
+      return formattedDate;
+    }
   }
 
   return (
     <Card withBorder p="lg" className={classes.card}>
       <Group position="apart" className={classes.title}>
         <Text size="sm" weight={700}>
-          {day}
+          {getDate()}
         </Text>
         <Group spacing={5}>
           <Text size="xs" color="dimmed">
-            <temps.icon size={24} className={classes.icon} stroke={1.5} />
+            <Image
+              width={64}
+              height={64}
+              src={condition.icon}
+              alt={condition.text}
+            />
+            {condition.text}
           </Text>
         </Group>
       </Group>
       <Card.Section className={classes.footer}>
         <div>
           <Text size="xs" color="dimmed">
-          {/* <IconWind size={18} className={classes.icon} stroke={1.5} /> */}
             Vent
           </Text>
           <Text weight={500} size="sm">
-            {wind} km/h
+            {maxwind} km/h
           </Text>
         </div>
         <div>
@@ -60,7 +85,7 @@ const CardWithStats = ({day, wind, temp, description}) => {
             Temp max.
           </Text>
           <Text weight={500} size="sm">
-            {temp} °C
+            {maxtemp} °C
           </Text>
         </div>
         <div>
@@ -69,7 +94,7 @@ const CardWithStats = ({day, wind, temp, description}) => {
           Temp min.
           </Text>
           <Text weight={500} size="sm">
-            {temp} °C
+            {mintemp} °C
           </Text>
         </div>
       </Card.Section>
