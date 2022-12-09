@@ -48,6 +48,7 @@ const Home = () => {
     // Requête API au submit de la recherche
     event.preventDefault();
     let cityupdate=document.getElementById("city").value;
+    setCity(cityupdate);
     fetchWeatherApi(cityupdate);
   };
 

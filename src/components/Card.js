@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStyles, Card, Text, Group, Image } from '@mantine/core';
-import { IconWind, IconSunHigh, IconCloud, IconSunWind, IconCloudRain, IconTornado, IconTemperaturePlus, IconTemperatureMinus } from '@tabler/icons';
+// import { IconWind, IconSunHigh, IconCloud, IconSunWind, IconCloudRain, IconTornado, IconTemperaturePlus, IconTemperatureMinus } from '@tabler/icons';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -28,11 +28,10 @@ const CardWithStats = ({date, maxtemp, mintemp, maxwind, condition, sunrise, sun
     let day = weekday[d.getDay()];
     var today = new Date();
     let dayT = weekday[today.getDay()];
-    let formattedDate = "";
-    if ( day == dayT ) {
-      return formattedDate = "Aujourd'hui";
+    if ( day === dayT ) {
+      return "Aujourd'hui";
     } else {
-      return formattedDate = day;
+      return day;
     }
   }
 
