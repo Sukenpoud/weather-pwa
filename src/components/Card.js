@@ -27,28 +27,41 @@ const CardWithStats = ({date, maxtemp, mintemp, maxwind, condition}) => {
   const { classes } = useStyles();
 
   /* Date formating */
+  // const getDate = () => {
+  //   let rawDate = new Date(date);
+  //   let day = rawDate.getDate();
+  //   let month = rawDate.getMonth()+1;
+  //   let year = rawDate.getFullYear();
+  //   day = day < 10 ? '0' + day : day;
+  //   month = month < 10 ? '0' + month : month;
+  //   let formattedDate = day + "/" + month + "/" + year;
+
+  //   var today = new Date();
+  //   let dayT = today.getDate();
+  //   let monthT = today.getMonth()+1;
+  //   let yearT = today.getFullYear();
+  //   dayT = dayT < 10 ? '0' + dayT : dayT;
+  //   monthT = monthT < 10 ? '0' + monthT : monthT;
+  //   var dateToday = dayT + "/" + monthT + "/" + yearT;
+
+  //   console.log(dateToday);
+  //   if (formattedDate == dateToday) {
+  //     return formattedDate = "Aujourd'hui"
+  //   } else {
+  //     return formattedDate;
+  //   }
+  // }
   const getDate = () => {
-    let rawDate = new Date(date);
-    let day = rawDate.getDate();
-    let month = rawDate.getMonth()+1;
-    let year = rawDate.getFullYear();
-    day = day < 10 ? '0' + day : day;
-    month = month < 10 ? '0' + month : month;
-    let formattedDate = day + "/" + month + "/" + year;
-
+    const weekday = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
+    const d = new Date(date);
+    let day = weekday[d.getDay()];
     var today = new Date();
-    let dayT = today.getDate();
-    let monthT = today.getMonth()+1;
-    let yearT = today.getFullYear();
-    dayT = dayT < 10 ? '0' + dayT : dayT;
-    monthT = monthT < 10 ? '0' + monthT : monthT;
-    var dateToday = dayT + "/" + monthT + "/" + yearT;
-
-    console.log(dateToday);
-    if (formattedDate == dateToday) {
-      return formattedDate = "Aujourd'hui"
+    let dayT = weekday[today.getDay()];
+    let formattedDate = "";
+    if ( day == dayT ) {
+      return formattedDate = "Aujourd'hui";
     } else {
-      return formattedDate;
+      return formattedDate = day;
     }
   }
 

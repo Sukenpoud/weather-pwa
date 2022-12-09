@@ -1,4 +1,5 @@
 import { Button, Box, TextInput } from '@mantine/core';
+import { Carousel } from '@mantine/carousel';
 import { IconSearch } from '@tabler/icons';
 import React from 'react';
 import Card from './Card';
@@ -85,27 +86,40 @@ const Cards = () => {
           // Nom de la ville quand chargement terminé
           data &&
           <div className='city'>{data.location.name}, {data.location.region}</div>
+        }      
+        {
+          // Météo à l'instant T
+          data &&
+          <div id="weather-now" class="section">
+            <div class="title"><h2>Actuellement</h2></div>
+            <div class="temp_now">{data.current.temp_c}<span class="celsius"> °C</span></div>
+            <div class="condition_now">{data.current.condition.text}</div>
+          </div>
         }
-        <ul id="cards-week">
+        <div id="cards-week" class="section">
+          <div class="title"><h2>Prévisions</h2></div>
+          <Carousel slideSize="70%" height={200} slideGap="md">
           {
             // Cards des 3 prochains jours quand chargement terminé
             data &&
             data.forecast.forecastday.map(( element, i ) => {
-              return (
-                <li key={i}>
-                  <Card
-                    date={element.date} 
-                    maxtemp={element.day.maxtemp_c} 
-                    mintemp={element.day.mintemp_c} 
-                    maxwind={element.day.maxwind_kph} 
-                    condition={element.day.condition}
-                  ></Card>
-                </li>
+              return (    
+                  <Carousel.Slide>
+                    <Card
+                      date={element.date} 
+                      maxtemp={element.day.maxtemp_c} 
+                      mintemp={element.day.mintemp_c} 
+                      maxwind={element.day.maxwind_kph} 
+                      condition={element.day.condition}
+                    ></Card>
+                  </Carousel.Slide>
+                
                 )
             })
-
           }
-        </ul>
+          </Carousel>
+        </div>
+        
     </div>
   )
 }

@@ -7,8 +7,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Prévisions météo</h1>
-      <p>Recherchez la ville de votre choix</p>
+      <h1>Ta Météo</h1>
       <Cards></Cards>
     </div>
   );

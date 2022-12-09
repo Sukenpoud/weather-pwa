@@ -1,11 +1,17 @@
-#cards-week {
-    display: flex;
-    justify-content: center;
-    gap:20px;
-    list-style-type: none;
-    padding: 0;
+/* General rules */
+.section {
+    padding: 30px 0;
+}
+.section .title {
+    font-weight: bold;
 }
 
+#weather-now .temp_now {
+    font-size: 40px;
+}
+#cards-week {
+    padding: 0;
+}
 #forecast form {
     display: flex;
     align-items: center;
