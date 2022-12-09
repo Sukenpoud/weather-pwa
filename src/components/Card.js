@@ -16,41 +16,12 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
     }`,
   },
-
-  title: {
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    marginBottom: '20px',
-  },
 }));
 
-const CardWithStats = ({date, maxtemp, mintemp, maxwind, condition}) => {
+const CardWithStats = ({date, maxtemp, mintemp, maxwind, condition, sunrise, sunset, daily_will_it_rain, avghumidity, uv}) => {
   const { classes } = useStyles();
 
-  /* Date formating */
-  // const getDate = () => {
-  //   let rawDate = new Date(date);
-  //   let day = rawDate.getDate();
-  //   let month = rawDate.getMonth()+1;
-  //   let year = rawDate.getFullYear();
-  //   day = day < 10 ? '0' + day : day;
-  //   month = month < 10 ? '0' + month : month;
-  //   let formattedDate = day + "/" + month + "/" + year;
-
-  //   var today = new Date();
-  //   let dayT = today.getDate();
-  //   let monthT = today.getMonth()+1;
-  //   let yearT = today.getFullYear();
-  //   dayT = dayT < 10 ? '0' + dayT : dayT;
-  //   monthT = monthT < 10 ? '0' + monthT : monthT;
-  //   var dateToday = dayT + "/" + monthT + "/" + yearT;
-
-  //   console.log(dateToday);
-  //   if (formattedDate == dateToday) {
-  //     return formattedDate = "Aujourd'hui"
-  //   } else {
-  //     return formattedDate;
-  //   }
-  // }
+  /* Display day */
   const getDate = () => {
     const weekday = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
     const d = new Date(date);
@@ -66,53 +37,101 @@ const CardWithStats = ({date, maxtemp, mintemp, maxwind, condition}) => {
   }
 
   return (
-    <Card withBorder p="lg" className={classes.card}>
-      <Group position="apart" className={classes.title}>
-        <Text size="sm" weight={700}>
-          {getDate()}
-        </Text>
-        <Group spacing={5}>
-          <Text size="xs" color="dimmed">
-            <Image
-              width={64}
-              height={64}
-              src={condition.icon}
-              alt={condition.text}
-            />
-            {condition.text}
+    <div className="CardWithStats">
+      <Card withBorder p="lg" className={classes.card}>
+        <Group position="apart">
+          <Text size="sm" weight={700}>
+            {getDate()}
           </Text>
+          <Group spacing={5}>
+            <Text size="xs" color="dimmed">
+              <Image
+                width={64}
+                height={64}
+                src={condition.icon}
+                alt={condition.text}
+              />
+              {condition.text}
+            </Text>
+          </Group>
         </Group>
-      </Group>
-      <Card.Section className={classes.footer}>
-        <div>
-          <Text size="xs" color="dimmed">
-            Vent
-          </Text>
-          <Text weight={500} size="sm">
-            {maxwind} km/h
-          </Text>
-        </div>
-        <div>
-          <Text size="xs" color="dimmed">
-          {/* <IconTemperaturePlus size={18} className={classes.icon} stroke={1.5} /> */}
-            Temp max.
-          </Text>
-          <Text weight={500} size="sm">
-            {maxtemp} °C
-          </Text>
-        </div>
-        <div>
-          <Text size="xs" color="dimmed">
-          {/* <IconTemperatureMinus size={18} className={classes.icon} stroke={1.5} /> */}
-          Temp min.
-          </Text>
-          <Text weight={500} size="sm">
-            {mintemp} °C
-          </Text>
-        </div>
-      </Card.Section>
-      
-    </Card>
+        <Card.Section className={classes.footer}>
+          <div>
+            <Text size="xs" color="dimmed">
+              {/* <IconTemperaturePlus size={18} className={classes.icon} stroke={1.5} /> */}
+              Lever de soleil
+            </Text>
+            <Text weight={500} size="sm">
+              {sunrise}
+            </Text>
+          </div>
+          <div>
+            <Text size="xs" color="dimmed">
+            {/* <IconTemperaturePlus size={18} className={classes.icon} stroke={1.5} /> */}
+              Coucher de soleil
+            </Text>
+            <Text weight={500} size="sm">
+              {sunset}
+            </Text>
+          </div>
+          <div>
+            <Text size="xs" color="dimmed">
+            {/* <IconTemperatureMinus size={18} className={classes.icon} stroke={1.5} /> */}
+            Risque de pluie
+            </Text>
+            <Text weight={500} size="sm">
+              {daily_will_it_rain}
+            </Text>
+          </div>
+          <div>
+            <Text size="xs" color="dimmed">
+            {/* <IconTemperatureMinus size={18} className={classes.icon} stroke={1.5} /> */}
+            Humidité
+            </Text>
+            <Text weight={500} size="sm">
+              {avghumidity} %
+            </Text>
+          </div>
+          <div>
+            <Text size="xs" color="dimmed">
+            {/* <IconTemperatureMinus size={18} className={classes.icon} stroke={1.5} /> */}
+            UV
+            </Text>
+            <Text weight={500} size="sm">
+              {uv}
+            </Text>
+          </div>
+        </Card.Section>
+        <Card.Section className={classes.footer}>
+          <div>
+            <Text size="xs" color="dimmed">
+              Vent
+            </Text>
+            <Text weight={500} size="sm">
+              {maxwind} km/h
+            </Text>
+          </div>
+          <div>
+            <Text size="xs" color="dimmed">
+            {/* <IconTemperaturePlus size={18} className={classes.icon} stroke={1.5} /> */}
+              Temp max.
+            </Text>
+            <Text weight={500} size="sm">
+              {maxtemp} °C
+            </Text>
+          </div>
+          <div>
+            <Text size="xs" color="dimmed">
+            {/* <IconTemperatureMinus size={18} className={classes.icon} stroke={1.5} /> */}
+            Temp min.
+            </Text>
+            <Text weight={500} size="sm">
+              {mintemp} °C
+            </Text>
+          </div>
+        </Card.Section>
+      </Card>
+    </div>
   )
 }
 

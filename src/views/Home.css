@@ -6,18 +6,18 @@
     font-weight: bold;
 }
 
-#weather-now .temp_now {
-    font-size: 40px;
-}
-#cards-week {
-    padding: 0;
-}
-#forecast form {
+/* Searchbar */
+#search_weather form {
     display: flex;
     align-items: center;
     justify-content: center;
     gap:16px;
     margin-bottom: 30px;
+}
+
+/* Current weather */
+#weather-now .temp_now {
+    font-size: 40px;
 }
 .city {
     font-weight: bold;
