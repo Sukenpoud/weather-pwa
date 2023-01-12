@@ -7,7 +7,6 @@ import './ForecastWeather.css';
 const ForecastWeather = ({data}) => {
   return(  
       <div id="forecast_weather" className="section">  
-        <div className="title"><h2>Prévisions</h2></div>
         <Carousel slideSize="100%" slideGap="md" controlSize={52} draggable={false} align="start" controlsOffset="xs">
         {
           // Cards des 3 prochains jours

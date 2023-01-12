@@ -29,3 +29,20 @@
     }
     
 }
+.trvent {
+    line-height: 1em;
+}
+.kmh {
+    font-size: 0.8em;
+}
+
+.day-tab table {
+    margin: 0 auto;
+}
+.day-tab > div{
+    display: flex;
+    align-items: center;
+}
+.day-tab .day-strong {
+    font-weight: bold;
+}

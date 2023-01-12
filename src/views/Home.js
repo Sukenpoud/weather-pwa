@@ -60,7 +60,6 @@ const Home = () => {
 
   return (
     <div className="container">
-      <h1>Ta Météo</h1>
       <Box sx={{ maxWidth: 400 }} mx="auto" id="search_weather">
         <form >
           <TextInput
