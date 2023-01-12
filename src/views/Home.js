@@ -55,10 +55,11 @@ const Home = () => {
   useEffect(() => {
     // Requête API à l'initialisation de la page
     fetchWeatherApi(city);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <h1>Ta Météo</h1>
       <Box sx={{ maxWidth: 400 }} mx="auto" id="search_weather">
         <form >
