@@ -31,7 +31,7 @@ const Home = () => {
       return response.json();
     })
     .then((actualData) => {
-      console.log(actualData);
+      // console.log(actualData);
       setData(actualData);
       setError(null);
     })

@@ -12,7 +12,7 @@ const ForecastWeather = ({data}) => {
           // Cards des 3 prochains jours
           data.forecast.forecastday.map(( element, i ) => {
             return (    
-                <Carousel.Slide>
+                <Carousel.Slide key={i}>
                   <Card
                     date={element.date} 
                     maxtemp={element.day.maxtemp_c} 

@@ -28,3 +28,8 @@
 .city {
     font-weight: bold;
 }
+
+/* Card */
+.head-card {
+    padding-bottom: 20px;
+}

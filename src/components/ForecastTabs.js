@@ -18,7 +18,7 @@ const ForecastTabs = ({forecastday}) => {
           <Table>
             <tbody>
               <tr>
-                <td className='day-strong'>Matin :</td>
+                <td className='day-strong'>Matin</td>
                 <td><Image
                     width={32}
                     height={32}
@@ -28,7 +28,7 @@ const ForecastTabs = ({forecastday}) => {
                 <td>{Math.round(forecastday.hour[8].temp_c)} °C</td>
               </tr>
               <tr>
-                <td className='day-strong'>Après-midi :</td>
+                <td className='day-strong'>Après-midi</td>
                 <td><Image
                     width={32}
                     height={32}
@@ -38,7 +38,7 @@ const ForecastTabs = ({forecastday}) => {
                 <td>{Math.round(forecastday.hour[14].temp_c)} °C</td>
               </tr>
               <tr>
-                <td className='day-strong'>Soir :</td>
+                <td className='day-strong'>Soir</td>
                 <td><Image
                     width={32}
                     height={32}
@@ -48,7 +48,7 @@ const ForecastTabs = ({forecastday}) => {
                 <td>{Math.round(forecastday.hour[20].temp_c)} °C</td>
               </tr>
               <tr>
-                <td className='day-strong'>Nuit :</td>
+                <td className='day-strong'>Nuit</td>
                 <td><Image
                     width={32}
                     height={32}
@@ -101,7 +101,7 @@ const ForecastTabs = ({forecastday}) => {
                   <td>Vent</td>
                   {
                   hours.map((column, index) => (
-                    <td key={index}>{column.wind_kph} <span className='kmh'>km/h</span></td>
+                    <td key={index}>{Math.round(column.wind_kph)} <span className='kmh'>km/h</span></td>
                   ))
                   }
                 </tr>

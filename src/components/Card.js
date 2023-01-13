@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStyles, Card, Text, Group, Image } from '@mantine/core';
-// import { IconWind, IconSunHigh, IconCloud, IconSunWind, IconCloudRain, IconTornado, IconTemperaturePlus, IconTemperatureMinus } from '@tabler/icons';
+import { IconTemperaturePlus, IconTemperatureMinus, IconSunrise, IconSunset } from '@tabler/icons';
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -8,6 +8,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   footer: {
+    color: '#080808',
     display: 'flex',
     gap: '5px',
     justifyContent: 'space-between',
@@ -38,94 +39,88 @@ const CardWithStats = ({date, maxtemp, mintemp, maxwind, condition, sunrise, sun
   return (
     <div className="CardWithStats">
       <Card withBorder p="lg" className={classes.card}>
-        <Group position="apart">
-          <Text size="sm" weight={700}>
-            {getDate()}
-          </Text>
-          <Group spacing={5}>
-            <Text size="xs" color="dimmed">
-              <Image
-                width={64}
-                height={64}
-                src={condition.icon}
-                alt={condition.text}
-              />
-              {condition.text}
+        <Group position="apart" className='head-card'>
+          <Group>
+            <Group spacing={5}>
+              <Text size="xs" color="dimmed">
+                <Image
+                  width={64}
+                  height={64}
+                  src={condition.icon}
+                  alt={condition.text}
+                />
+              </Text>
+            </Group>
+            <Text size="sm" weight={700}>
+              {getDate()}
+              <Text size="xs" color="dimmed" weight={400}>
+                {condition.text}
+              </Text>
             </Text>
           </Group>
+
+          <Group>
+            <Group>
+              <IconTemperaturePlus size={32} className={classes.icon} stroke={1.2} color={'#080808'} />
+              <Text>
+                {Math.round(maxtemp)} °C
+              </Text>
+            </Group>
+            <Group>
+              <IconTemperatureMinus size={32} className={classes.icon} stroke={1.2} color={'#080808'} />
+              <Text>
+                {Math.round(mintemp)} °C
+              </Text>
+            </Group>
+            
+          </Group>
+
         </Group>
         <Card.Section className={classes.footer}>
           <div>
-            <Text size="xs" color="dimmed">
-              {/* <IconTemperaturePlus size={18} className={classes.icon} stroke={1.5} /> */}
-              Lever de soleil
-            </Text>
-            <Text weight={500} size="sm">
+            <IconSunrise size={24} className={classes.icon} stroke={1.5} />
+            <Text size="sm">
               {sunrise}
             </Text>
           </div>
           <div>
-            <Text size="xs" color="dimmed">
-            {/* <IconTemperaturePlus size={18} className={classes.icon} stroke={1.5} /> */}
-              Coucher de soleil
-            </Text>
-            <Text weight={500} size="sm">
+            <IconSunset size={24} className={classes.icon} stroke={1.5} />
+            <Text size="sm">
               {sunset}
-            </Text>
-          </div>
-          <div>
-            <Text size="xs" color="dimmed">
-            {/* <IconTemperatureMinus size={18} className={classes.icon} stroke={1.5} /> */}
-            Risque de pluie
-            </Text>
-            <Text weight={500} size="sm">
-              {daily_will_it_rain}
-            </Text>
-          </div>
-          <div>
-            <Text size="xs" color="dimmed">
-            {/* <IconTemperatureMinus size={18} className={classes.icon} stroke={1.5} /> */}
-            Humidité
-            </Text>
-            <Text weight={500} size="sm">
-              {avghumidity} %
-            </Text>
-          </div>
-          <div>
-            <Text size="xs" color="dimmed">
-            {/* <IconTemperatureMinus size={18} className={classes.icon} stroke={1.5} /> */}
-            UV
-            </Text>
-            <Text weight={500} size="sm">
-              {uv}
             </Text>
           </div>
         </Card.Section>
         <Card.Section className={classes.footer}>
           <div>
             <Text size="xs" color="dimmed">
+              Risque de pluie
+            </Text>
+            <Text size="sm">
+              {daily_will_it_rain}
+            </Text>
+          </div>
+          <div>
+            <Text size="xs" color="dimmed">
+              Humidité
+            </Text>
+            <Text size="sm">
+              {avghumidity} %
+            </Text>
+          </div>
+          <div>
+            <Text size="xs" color="dimmed">
+              UV
+            </Text>
+            <Text size="sm">
+              {uv}
+            </Text>
+          </div>
+          <div>
+            <Text size="xs" color="dimmed">
               Vent
             </Text>
-            <Text weight={500} size="sm">
+            <Text size="sm">
               {maxwind} km/h
-            </Text>
-          </div>
-          <div>
-            <Text size="xs" color="dimmed">
-            {/* <IconTemperaturePlus size={18} className={classes.icon} stroke={1.5} /> */}
-              Temp max.
-            </Text>
-            <Text weight={500} size="sm">
-              {maxtemp} °C
-            </Text>
-          </div>
-          <div>
-            <Text size="xs" color="dimmed">
-            {/* <IconTemperatureMinus size={18} className={classes.icon} stroke={1.5} /> */}
-            Temp min.
-            </Text>
-            <Text weight={500} size="sm">
-              {mintemp} °C
             </Text>
           </div>
         </Card.Section>
